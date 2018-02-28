@@ -7,7 +7,7 @@ var quotes = [
     //test object with missing year
   {quote: 'I\'m not throwing away my shot', source: 'Lin Manuel Miranda', citation: 'Hamilton', tags: ['presidents', 'inspiration', 'New York']},
     //test object with missing citation
-  {quote: 'I love eggs', source: 'Elliot Liebman', year: 2018, tags: ['eating', '"being me"', 'escapism']},
+  {quote: 'I love eggs', source: 'Elliot Liebman', year: 2018, tags: ['eating', 'being me', 'escapism']},
     //test object with blank citation
   {quote: 'Farming is the source of life', source: 'Golda Maier', citation: '', year: 1967, tags: ['farming', 'life', 'extra credit']},
   {quote: 'You can do anything, but not everything', source: 'David Allen', citation: 'Making it All Work', year: 2009, tags: ['art', 'business', 'creative', 'life balance']}
