@@ -93,16 +93,16 @@ function printQuote(){
   for (i = 0; i < listItems.length; i++) {
     listItems[i].style.color = newColor;
   }
-  /* Final HTML looks like:
-  <p class="quote"> [quote here] </p>
-  <p class="source"> [source here]
-    <span class="citation"> [citation here] </span>
-    <span class="year"> [year here] </span>
-  </p>
-  <ul>
-    <li> [tag] </li>
-    ...
-  </ul>*/
+        /* Final HTML looks like:
+        <p class="quote"> [quote here] </p>
+        <p class="source"> [source here]
+          <span class="citation"> [citation here] </span>
+          <span class="year"> [year here] </span>
+        </p>
+        <ul>
+          <li> [tag] </li>
+          ...
+        </ul>*/
   //Timer resets every time the function is called
 clearInterval(timer);
 timer = setInterval(printQuote, 7000);
