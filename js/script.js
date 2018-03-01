@@ -43,8 +43,8 @@ function randomColor(){
   var h = Math.floor(Math.random() * 264) + 1;
   var s = Math.floor(Math.random() * 75) + 1;
   var l = Math.floor(Math.random() * 50) + 26;
-  var rgba = 'hsla(' + h + ', ' + s + '%, ' + l + '%, 1)'
-  return rgba;
+  var hsla = 'hsla(' + h + ', ' + s + '%, ' + l + '%, 1)'
+  return hsla;
 }
 
 function printQuote(){
