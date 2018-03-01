@@ -3,18 +3,23 @@ var quotes = [
     //test object with quote and source only
   {quote: 'When the power of love overcomes the love of power, then the world will know peace', source: 'Jimi Hendrix', tags: ['guitar', 'psychedelic', '\'60s']},
     //test object with all properties
-  {quote: 'Don\'t want a nation under the new media', source: 'Billy Joe Armstrong', citation: 'American Idiot', year: 2004, tags: ['punk', 'music', 'hair']},
+  {quote: 'Don\'t want a nation under the new media', source: 'Billy Joe Armstrong', citation: 'American Idiot', year: 2004, tags: ['punk', 'music', 'culture']},
     //test object with missing year
   {quote: 'I\'m not throwing away my shot', source: 'Lin Manuel Miranda', citation: 'Hamilton', tags: ['presidents', 'inspiration', 'New York']},
     //test object with missing citation
-  {quote: 'I love eggs', source: 'Elliot Liebman', year: 2018, tags: ['eating', 'being me', 'escapism']},
+  {quote: 'I love eggs', source: 'Elliot Liebman', year: 2018, tags: ['eating', 'being me', 'cooking']},
     //test object with blank citation
-  {quote: 'Farming is the source of life', source: 'Golda Maier', citation: '', year: 1967, tags: ['farming', 'life', 'extra credit']},
+  {quote: 'Don\'t be humble, you\'re not that great', source: 'Golda Meir', citation: '', tags: ['humble', 'inspiration', 'Israel']},
   {quote: 'You can do anything, but not everything', source: 'David Allen', citation: 'Making it All Work', year: 2009, tags: ['art', 'business', 'creative', 'life balance']}
 ];
 
+//establish a global timer variable.
+//For some reason, keeping it global avoids timing issues that occured
+//when I tried to declare var timer inside the printQuote function
+var timer;
   //Keep track of the quote currently on the page
 var currentQuote = {};
+
 
 function getRandomQuote(){
     //arrays are zero indexed, so we don't need to add 1
@@ -31,15 +36,17 @@ function listify(arr){
   html += '</ul>';
   return html;
 }
-
+  //Generate a random HSL color for the background.
+  //Ranges were wet based on what looks good to me.
+  //Avoiding bright whites, etc
 function randomColor(){
   var h = Math.floor(Math.random() * 264) + 1;
   var s = Math.floor(Math.random() * 75) + 1;
   var l = Math.floor(Math.random() * 50) + 26;
-  var rgba = 'hsla(' + h + ', ' + s + '%, ' + l + '%, 1)'
-  return rgba;
+  var hsla = 'hsla(' + h + ', ' + s + '%, ' + l + '%, 1)'
+  return hsla;
 }
-var timer;
+
 function printQuote(){
     //store random quote in a variable
   var randomQuote = getRandomQuote();
@@ -86,18 +93,17 @@ function printQuote(){
   for (i = 0; i < listItems.length; i++) {
     listItems[i].style.color = newColor;
   }
-
-
-  /* Final HTML looks like:
-  <p class="quote"> [quote here] </p>
-  <p class="source"> [source here]
-    <span class="citation"> [citation here] </span>
-    <span class="year"> [year here] </span>
-  </p>
-  <ul>
-    <li> [tag] </li>
-    ...
-  </ul>*/
+        /* Final HTML looks like:
+        <p class="quote"> [quote here] </p>
+        <p class="source"> [source here]
+          <span class="citation"> [citation here] </span>
+          <span class="year"> [year here] </span>
+        </p>
+        <ul>
+          <li> [tag] </li>
+          ...
+        </ul>*/
+  //Timer resets every time the function is called
 clearInterval(timer);
 timer = setInterval(printQuote, 7000);
 }
