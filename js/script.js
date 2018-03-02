@@ -1,5 +1,5 @@
   //Array of quote objects, representing different test cases
-var quotes = [
+const quotes = [
     //test object with quote and source only
   {quote: 'When the power of love overcomes the love of power, then the world will know peace', source: 'Jimi Hendrix', tags: ['guitar', 'psychedelic', '\'60s']},
     //test object with all properties
@@ -16,20 +16,20 @@ var quotes = [
 //establish a global timer variable.
 //For some reason, keeping it global avoids timing issues that occured
 //when I tried to declare var timer inside the printQuote function
-var timer;
+let timer;
   //Keep track of the quote currently on the page
-var currentQuote = {};
+let currentQuote = {};
 
 
-function getRandomQuote(){
+const getRandomQuote = () => {
     //arrays are zero indexed, so we don't need to add 1
-  var randomIndex = Math.floor(Math.random() * quotes.length);
+  let randomIndex = Math.floor(Math.random() * quotes.length);
   return quotes[randomIndex];
 }
   //turn an array into an unordered list
   //for use with the tags property of each quote object
-function listify(arr){
-  var html = '<ul>';
+const listify = arr => {
+  let html = '<ul>';
   for( i = 0; i < arr.length; i++) {
     html += '<li>' + arr[i] + '</li>';
   }
@@ -39,17 +39,17 @@ function listify(arr){
   //Generate a random HSL color for the background.
   //Ranges were wet based on what looks good to me.
   //Avoiding bright whites, etc
-function randomColor(){
-  var h = Math.floor(Math.random() * 264) + 1;
-  var s = Math.floor(Math.random() * 75) + 1;
-  var l = Math.floor(Math.random() * 50) + 26;
-  var hsla = 'hsla(' + h + ', ' + s + '%, ' + l + '%, 1)'
+const randomColor = () => {
+  let h = Math.floor(Math.random() * 264) + 1;
+  let s = Math.floor(Math.random() * 75) + 1;
+  let l = Math.floor(Math.random() * 50) + 26;
+  let hsla = 'hsla(' + h + ', ' + s + '%, ' + l + '%, 1)'
   return hsla;
 }
 
-function printQuote(){
+const printQuote = () => {
     //store random quote in a variable
-  var randomQuote = getRandomQuote();
+  let randomQuote = getRandomQuote();
     //If it's the same as the current quote, try again
   while (randomQuote.quote === currentQuote.quote){
     randomQuote = getRandomQuote();
@@ -57,13 +57,13 @@ function printQuote(){
     //update the current quote
   currentQuote = randomQuote;
     //store each quote property in its own variable
-  var quote = randomQuote.quote;
-  var source = randomQuote.source;
-  var citation = randomQuote.citation;
-  var year = randomQuote.year;
-  var tags = randomQuote.tags;
+  let quote = randomQuote.quote;
+  let source = randomQuote.source;
+  let citation = randomQuote.citation;
+  let year = randomQuote.year;
+  let tags = randomQuote.tags;
     //initialize HTML variable as empty string
-  var quoteHTML = '';
+  let quoteHTML = '';
     //add quote and source to the HTML
   quoteHTML += '<p class="quote">' + quote + '</p>';
   quoteHTML += '<p class="source">' + source;
@@ -84,12 +84,12 @@ function printQuote(){
   document.getElementById('quote-box').innerHTML = quoteHTML;
 
     //change background color of page and button
-  var newColor = randomColor();
+  let newColor = randomColor();
   document.getElementsByTagName("BODY")[0].style.background = newColor;
   document.getElementById("loadQuote").style.background = newColor;
     //change text color of tag list to match background
-  var unorderedList = document.getElementsByTagName("UL")[0];
-  var listItems = unorderedList.getElementsByTagName("LI");
+  let unorderedList = document.getElementsByTagName("UL")[0];
+  let listItems = unorderedList.getElementsByTagName("LI");
   for (i = 0; i < listItems.length; i++) {
     listItems[i].style.color = newColor;
   }
